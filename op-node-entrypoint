@@ -1,0 +1,20 @@
+#!/bin/sh
+set -eu
+exec /app/op-node --l2=http://op-reth:8551 \
+  --l2.jwt-secret=/config/jwt.txt \
+  --l2.skip-sync-start-check=true \
+  --rollup.config=/config/rollup.json \
+  --l1=$L1_RPC_URL \
+  --l1.rpckind=$L1_RPC_KIND \
+  --l1.beacon.ignore=true \
+  --l1.trustrpc  \
+  --p2p.listen.ip=0.0.0.0  \
+  --p2p.listen.tcp=9003 \
+  --p2p.priv.path=/config/p2p-node-key \
+  --p2p.static=$CL_NODES \
+  --safedb.path=/data/node-db \
+  --syncmode=execution-layer \
+  --altda.enabled="true" \
+  --altda.da-service="false" \
+  --altda.verify-on-read=false \
+  --altda.da-server=https://da2.otterrpc.com
