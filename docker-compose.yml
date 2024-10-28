@@ -13,6 +13,7 @@ services:
         - ./op-reth-entrypoint:/op-reth-entrypoint
     env_file:
       - .env
+    restart: always
     logging:
       driver: "json-file"
       options:
@@ -38,6 +39,7 @@ services:
         - ./data/op_log:/op_log
     env_file:
       - .env
+    restart: always
     logging:
       driver: "json-file"
       options:
