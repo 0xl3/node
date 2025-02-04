@@ -1,19 +1,19 @@
 services:
+
   op-reth: 
-    image:  ghcr.io/bnb-chain/op-reth:v1.0.5
+    image:  ghcr.io/otternode-io/ott-op-stack-1103 
+    restart: always
     user: root
-    ports:
-      - 9545:8545       # RPC
-      - 9546:8546       # RPC
-      - 30301:30301
     entrypoint: /op-reth-entrypoint
     volumes:
         - ./data/op-reth:/datadir
-        - ./config:/config
+        - ../config:/config
         - ./op-reth-entrypoint:/op-reth-entrypoint
     env_file:
-      - .env
-    restart: always
+      - ../config/.env
+    ports:
+      - 9222:9222     # P2P TCP
+      - 9222:9222/udp # P2P UDP
     logging:
       driver: "json-file"
       options:
@@ -21,25 +21,19 @@ services:
         max-file: "10"
 
   op-node: 
-    image:  ghcr.io/0xl3/op-stack:latest
+    image:  ghcr.io/otternode-io/ott-op-stack-1103 
+    restart: always
     user: root
     depends_on:
       - op-reth
-    ports:
-      - 7545:8547     # RPC
-      - 9222:9222     # P2P TCP
-      - 9222:9222/udp # P2P UDP
-      - 7300:7300     # metrics
-      - 6060:6060     # pprof
     entrypoint: /op-node-entrypoint
     volumes:
-        - ./config:/config
+        - ../config:/config
         - ./op-node-entrypoint:/op-node-entrypoint
         - ./data:/data
         - ./data/op_log:/op_log
     env_file:
-      - .env
-    restart: always
+      - ../config/.env
     logging:
       driver: "json-file"
       options:

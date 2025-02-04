@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/bin/bash
 set -eu
-op-reth init   --datadir /datadir --chain /config/genesis.json
-exec op-reth node --datadir /datadir \
+/app/op-reth init   --datadir /datadir --chain /config/genesis.json
+exec /app/op-reth node --datadir /datadir \
    --chain /config/genesis.json \
   --http \
   --http.corsdomain="*" \
@@ -15,7 +15,7 @@ exec op-reth node --datadir /datadir \
   --authrpc.addr=0.0.0.0 \
   --authrpc.port=8551 \
   --authrpc.jwtsecret=/config/jwt.txt \
-  --rpc.eth-proof-window=5000 \
+  --rpc.eth-proof-window=1209600 \
   --rollup.sequencer-http=$RETH_SEQUENCER_HTTP \
   --rollup.disable-tx-pool-gossip \
   --bootnodes=$EL_NODES \
