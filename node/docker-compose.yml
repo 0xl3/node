@@ -12,8 +12,8 @@ services:
     env_file:
       - ../config/.env
     ports:
-      - 9222:9222     # P2P TCP
-      - 9222:9222/udp # P2P UDP
+      - 8545:8545       # RPC
+      - 8546:8546       # RPC
     logging:
       driver: "json-file"
       options:
