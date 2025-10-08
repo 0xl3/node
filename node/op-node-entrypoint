@@ -29,10 +29,8 @@ else
   exit 8
 fi
 export OP_NODE_P2P_ADVERTISE_IP=$PUBLIC_IP
-
 exec /app/op-node --l2=http://op-reth:8551 \
   --l2.jwt-secret=/config/jwt.txt \
-  --verifier.l1-confs=4 \
   --rollup.config=/config/rollup.json \
   --rpc.addr=0.0.0.0 \
   --rpc.port=8547 \
@@ -43,8 +41,16 @@ exec /app/op-node --l2=http://op-reth:8551 \
   --p2p.listen.ip=0.0.0.0 \
   --p2p.listen.tcp=9223 \
   --p2p.listen.udp=9223 \
+  --p2p.priv.path=/config/op-node-key \
   --syncmode=execution-layer \
   --altda.enabled="true" \
   --altda.da-service="false" \
   --altda.da-server=https://r2-da.otternode.com
 
+
+#  --syncmode=execution-layer \
+
+ # --l1.beacon-archiver=$L1_BEACON_URL \
+
+#  --altda.da-server="http://37.27.129.89:3100" \
+#  --altda.da-service="true" \

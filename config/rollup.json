@@ -1,19 +1,21 @@
 {
   "genesis": {
     "l1": {
-      "hash": "0x8638b2fabd920d62ad7aaa63664691927d2df761ee48ffd83ae04a3666a87e8a",
-      "number": 127252520
+      "hash": "0x3dc9e9436f4d04b4529457a6d9ee3565343763165b1c8d63610e5f5fe3121e40",
+      "number": 132096704
     },
     "l2": {
-      "hash": "0xd2a8d763d99e8194cca2f76a8bc725d9149b6c700bbf0980296a807c6e98f4ca",
+      "hash": "0x567926c435d12304752f80750ab0214a20fbe75ff6145c46152c5861620df1da",
       "number": 0
     },
-    "l2_time": 1730103817,
+    "l2_time": 1739792185,
     "system_config": {
       "batcherAddr": "0xce8d872b617677773266a5f1018af27815c35212",
       "overhead": "0x0000000000000000000000000000000000000000000000000000000000000834",
       "scalar": "0x00000000000000000000000000000000000000000000000000000000000f4240",
-      "gasLimit": 200000000
+      "gasLimit": 800000000,
+      "eip1559Params": "0x0000000000000000",
+      "operatorFeeParams": "0x0000000000000000000000000000000000000000000000000000000000000000"
     }
   },
   "block_time": 2,
@@ -27,12 +29,20 @@
   "delta_time": 0,
   "ecotone_time": 0,
   "fjord_time": 0,
-  "batch_inbox_address": "0xff00000000000000000000000000000000007117",
-  "deposit_contract_address": "0x0e43db848cfe6f56e4d0770ac710edaaab424728",
-  "l1_system_config_address": "0x4c0a1880437a7ee790eb5859b5cf7c86e66db23a",
+  "granite_time": 0,
+  "holocene_time": 1744192666,
+  "isthmus_time": 1746371979,
+  "batch_inbox_address": "0xff00000000000000000000000000000000008888",
+  "deposit_contract_address": "0xaa323b6f5a15fe4cbbee698e08973bf5221bbeee",
+  "l1_system_config_address": "0x67a11f6ea5352f58febf580f7e84e33405638c1c",
   "protocol_versions_address": "0x0000000000000000000000000000000000000000",
+  "chain_op_config": {
+    "eip1559Elasticity": 6,
+    "eip1559Denominator": 50,
+    "eip1559DenominatorCanyon": 250
+  },
   "alt_da": {
-    "da_challenge_contract_address": "0x5b30b63563c1b24b2d8891da3971a08ab1986a24",
+    "da_challenge_contract_address": "0x499276c31360f52afc22a144354d810d6b5b21db",
     "da_commitment_type": "KeccakCommitment",
     "da_challenge_window": 16,
     "da_resolve_window": 16

@@ -1,19 +1,22 @@
 services:
 
   op-reth: 
-    image:  ghcr.io/otternode-io/ott-op-stack-1103 
-    restart: always
+#    image:  ghcr.io/otternode-io/ott-op-stack-1103
+#    image:  ghcr.io/paradigmxyz/op-reth
+    image:  ghcr.io/paradigmxyz/op-reth
     user: root
     entrypoint: /op-reth-entrypoint
     volumes:
         - ./data/op-reth:/datadir
         - ../config:/config
         - ./op-reth-entrypoint:/op-reth-entrypoint
+    restart: always
+    ports:
+      - 9545:8545
+      - 9546:8546
+      - 30301:30301
     env_file:
       - ../config/.env
-    ports:
-      - 8545:8545       # RPC
-      - 8546:8546       # RPC
     logging:
       driver: "json-file"
       options:
@@ -21,12 +24,14 @@ services:
         max-file: "10"
 
   op-node: 
-    image:  ghcr.io/otternode-io/ott-op-stack-1103 
-    restart: always
+    image:  ghcr.io/otternode-io/ott-op-stack
     user: root
     depends_on:
       - op-reth
     entrypoint: /op-node-entrypoint
+    ports:
+      - 9223:9223
+    restart: always
     volumes:
         - ../config:/config
         - ./op-node-entrypoint:/op-node-entrypoint
